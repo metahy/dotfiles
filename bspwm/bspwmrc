@@ -13,7 +13,7 @@ pri="eDP-1-1"
 if [[ $m_count == 2 ]]; then
     sec=$(xrandr -q | grep -w connected | grep -v $pri | awk '{print $1}')
     bspc monitor $pri -d 1 2 3 4 5
-    bspc monitor $sec -d 6 7 8 9 0
+    bspc monitor $sec -d 6 7 8 9 
 else
     bspc config remove_disabled_monitors true
     bspc config remove_unplugged_monitors true
