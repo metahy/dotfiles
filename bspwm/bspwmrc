@@ -1,42 +1,49 @@
 #! /bin/sh
 
-pgrep -x sxhkd >/dev/null || sxhkd &
-pgrep -x fcitx5 >/dev/null || fcitx5 &
+pgrep -x sxhkd > /dev/null || sxhkd &
 
+# Kill polybar
 polybar-msg cmd quit
 killall -q polybar
-while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+while pgrep  -u $UID -x polybar > /dev/null; do sleep 1; done
 
-~/.config/xrandr/xrandr_reset.sh
+# Set xrandr
+~/.config/xrandr/xrandr_reset
+
 m_count=$(xrandr -q | grep -wc connected)
-pri="eDP-1-1"
+pri="eDP-1"
 if [[ $m_count == 2 ]]; then
     sec=$(xrandr -q | grep -w connected | grep -v $pri | awk '{print $1}')
-    bspc monitor $pri -d 1 2 3 4 5
-    bspc monitor $sec -d 6 7 8 9 
+    bspc monitor $pri -d ₁ ₂ ₃ ₄ ₅
+    bspc monitor $sec -d ₆ ₇ ₈ ₉ ₀
 else
     bspc config remove_disabled_monitors true
     bspc config remove_unplugged_monitors true
-    bspc monitor $pri -d 1 2 3 4 5 6 7 8 9 0
+    bspc monitor $pri -d ₁ ₂ ₃ ₄ ₅ ₆ ₇ ₈ ₉ ₀
 fi
 
-#~/.config/polybar/launch.sh
+~/.fehbg &
+picom --config ~/.config/picom/picom.conf -b
 
-#picom --config ~/.config/picom/picom.conf --no-vsync -b
+bspc config border_width         1
+bspc config window_gap           5
 
-bspc config border_width 2
-bspc config window_gap 12
-
-bspc config split_ratio 0.52
-bspc config borderless_monocle true
-bspc config gapless_monocle true
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
 
 bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a Chromium desktop='^2'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
+bspc rule -a URxvt state=floating
 bspc rule -a Wine state=floating
 bspc rule -a netease-cloud-music state=floating
 
+# Input method
+pgrep -x fcitx5 > /dev/null || fcitx5 &
+
+# Polybar
 ~/.config/polybar/launch.sh
+
