@@ -1,0 +1,42 @@
+#! /bin/sh
+
+pgrep -x sxhkd >/dev/null || sxhkd &
+pgrep -x fcitx5 >/dev/null || fcitx5 &
+
+polybar-msg cmd quit
+killall -q polybar
+while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+
+~/.config/xrandr/xrandr_reset.sh
+m_count=$(xrandr -q | grep -wc connected)
+pri="eDP-1-1"
+if [[ $m_count == 2 ]]; then
+    sec=$(xrandr -q | grep -w connected | grep -v $pri | awk '{print $1}')
+    bspc monitor $pri -d I II III IV V
+    bspc monitor $sec -d VI VII VIII IX X
+else
+    bspc config remove_disabled_monitors true
+    bspc config remove_unplugged_monitors true
+    bspc monitor $pri -d I II III IV V VI VII VIII IX X
+fi
+
+#~/.config/polybar/launch.sh
+
+#picom --config ~/.config/picom/picom.conf --no-vsync -b
+
+bspc config border_width 2
+bspc config window_gap 12
+
+bspc config split_ratio 0.52
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Chromium desktop='^2'
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+bspc rule -a Wine state=floating
+bspc rule -a netease-cloud-music state=floating
+
+~/.config/polybar/launch.sh
