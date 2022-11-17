@@ -123,3 +123,7 @@ super + {Left,Down,Up,Right}
 # WeChat
 ctrl + alt + w
         ~/scripts/wechat.sh
+
+# i3lock
+alt + l
+	~/.i3/lock
