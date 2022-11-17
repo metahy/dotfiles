@@ -1,0 +1,1 @@
+env WINEPREDLL=/opt/apps/com.qq.weixin.deepin/files/dlls WINEDLLPATH=/opt/deepin-wine6-stable/lib:/opt/deepin-wine6-stable/lib64 WINEPREFIX=/home/hyleon/.deepinwine/Deepin-WeChat deepin-wine6-stable /opt/deepinwine/tools/sendkeys.exe w
