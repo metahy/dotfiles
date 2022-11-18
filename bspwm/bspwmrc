@@ -11,7 +11,7 @@ while pgrep  -u $UID -x polybar > /dev/null; do sleep 1; done
 ~/.config/xrandr/xrandr_reset
 
 m_count=$(xrandr -q | grep -wc connected)
-pri="eDP-1"
+pri="eDP-1-1"
 if [[ $m_count == 2 ]]; then
     sec=$(xrandr -q | grep -w connected | grep -v $pri | awk '{print $1}')
     bspc monitor $pri -d ₁ ₂ ₃ ₄ ₅
@@ -40,6 +40,7 @@ bspc rule -a Screenkey manage=off
 bspc rule -a URxvt state=floating
 bspc rule -a Wine state=floating
 bspc rule -a netease-cloud-music state=floating
+bspc rule -a Font-manager state=floating
 
 # Input method
 pgrep -x fcitx5 > /dev/null || fcitx5 &

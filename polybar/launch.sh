@@ -13,7 +13,7 @@ m_count=$(xrandr -q | grep -wc connected)
 if [[ $m_count == 2 ]]; then
     polybar pri_top 2>&1 | tee -a /tmp/polybar_pri_top.log & disown
 
-    pri="eDP-1"
+    pri="eDP-1-1"
     sec=$(xrandr -q | grep -w connected | grep -v $pri | awk '{print $1}')
     MONITOR=$sec polybar sec_top 2>&1 | tee -a /tmp/polybar_sec_top.log & disown
 else
