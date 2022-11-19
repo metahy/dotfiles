@@ -41,6 +41,7 @@ bspc rule -a URxvt state=floating
 bspc rule -a Wine state=floating
 bspc rule -a netease-cloud-music state=floating
 bspc rule -a Font-manager state=floating
+bspc rule -a obs state=floating
 
 # Input method
 pgrep -x fcitx5 > /dev/null || fcitx5 &
