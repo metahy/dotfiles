@@ -114,6 +114,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias sz="source ~/.zshrc"
 alias sudo="sudo "
+alias ll="ls -larth"
 alias vi="nvim"
 alias vim="nvim"
 alias @docker="systemctl start docker"
