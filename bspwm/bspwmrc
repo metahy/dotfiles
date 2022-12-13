@@ -2,6 +2,8 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
+/usr/bin/dunst &
+
 # Kill polybar
 polybar-msg cmd quit
 killall -q polybar
@@ -42,6 +44,9 @@ bspc rule -a Wine state=floating
 bspc rule -a netease-cloud-music state=floating
 bspc rule -a Font-manager state=floating
 bspc rule -a obs state=floating
+bspc rule -a matplotlib state=floating rectangle=1280x720+320+160
+bspc rule -a org.remmina.Remmina state=floating
+bspc rule -a Xfce4-terminal state=floating
 
 # Input method
 pgrep -x fcitx5 > /dev/null || fcitx5 &

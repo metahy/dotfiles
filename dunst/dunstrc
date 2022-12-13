@@ -213,7 +213,7 @@
     min_icon_size = 32
 
     # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 128
+    max_icon_size = 32
 
     # Paths to default icons (only neccesary when not using recursive icon lookup)
     icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
@@ -313,8 +313,8 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    # background = "#222222"
-    background = "#FF0000"
+    background = "#222222"
+    #background = "#FF0000"
     foreground = "#888888"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
@@ -329,8 +329,8 @@
     #default_icon = /path/to/icon
 
 [urgency_critical]
-    #background = "#900000"
-    background = "#0000FF"
+    background = "#900000"
+    #background = "#0000FF"
     foreground = "#ffffff"
     frame_color = "#ff0000"
     timeout = 0
