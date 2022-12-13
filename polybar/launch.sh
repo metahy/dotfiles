@@ -9,15 +9,15 @@ killall -q polybar
 # Wait until the processes have been shut down
 while pgrep -u $UID -x polybar > /dev/null; do sleep 1; done
 
-pri="eDP-1-1"
 m_count=$(xrandr -q | grep -wc connected)
 if [[ $m_count == 2 ]]; then
-    MONITOR=$pri polybar pri_top 2>&1 | tee -a /tmp/polybar_pri_top.log & disown
+    polybar pri_top 2>&1 | tee -a /tmp/polybar_pri_top.log & disown
 
+    pri="eDP-1-1"
     sec=$(xrandr -q | grep -w connected | grep -v $pri | awk '{print $1}')
     MONITOR=$sec polybar sec_top 2>&1 | tee -a /tmp/polybar_sec_top.log & disown
 else
-    MONITOR=$pri polybar single_top 2>&1 | tee -a /tmp/polybar_single_top.log & disown
+    polybar single_top 2>&1 | tee -a /tmp/polybar_single_top.log & disown
 fi
 
 echo "Bars launched..."
