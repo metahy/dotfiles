@@ -8,6 +8,7 @@ fi
 if [[ $m_count == 2 ]]; then
    sec=$(xrandr -q | grep -w connected | grep -v $pri | awk '{print $1}')
    xrandr --output "$pri" --primary --auto --scale 1.0x1.0 --output "$sec" --right-of "$pri" --auto --scale 1.0x1.0
+   #xrandr --output "$pri" --primary --auto --scale 1.0x1.0 --output "$sec" --above "$pri" --auto --scale 1.0x1.0
 else
    xrandr --output "$pri" --primary --auto --scale 1.0x1.0 "$(xrandr -q | awk '/ disconnected/ {print "--output", $1, "--off"}' | paste -sd ' ')"
 fi

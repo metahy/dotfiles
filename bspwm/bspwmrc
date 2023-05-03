@@ -51,6 +51,8 @@ bspc rule -a obs state=floating
 bspc rule -a matplotlib state=floating rectangle=1280x720+320+160
 bspc rule -a org.remmina.Remmina state=floating
 bspc rule -a Xfce4-terminal state=floating
+bspc rule -a weixin state=floating
+bspc rule -a rdesktop state=floating
 
 # Input method
 pgrep -x fcitx5 > /dev/null || fcitx5 &
